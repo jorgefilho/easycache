@@ -88,5 +88,4 @@ public class FilePropertiesBuilder implements Serializable {
 			throw new FilePropertiesBuilderException("Fail in configuration of reloading file strategy.", e);
 		}
 	}
-
 }
