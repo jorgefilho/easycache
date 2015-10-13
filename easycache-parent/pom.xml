@@ -9,7 +9,7 @@
   <groupId>com.netshoes.easycache</groupId>
   <artifactId>easycache-parent</artifactId>
   <packaging>pom</packaging>
-  <version>1.0.0</version>
+  <version>1</version>
   <name>Netshoes Easy Cache Parent</name>
   <url>https://github.com/netshoes/easy-cache</url>
   <description></description>

@@ -31,7 +31,7 @@ public class JedisPoolFactory {
     @ApplicationScoped
     @Produces
     public  JedisPool getJedisPool(){
-    	final CacheProperties cacheProperties = applicationProperties.getCacheProperties();
+    	final EasyCacheProperties cacheProperties = applicationProperties.getCacheProperties();
     	
     	String  host = DEFAULT_HOST;
     	Integer port = DEFAULT_PORT;
