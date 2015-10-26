@@ -1,8 +1,10 @@
 package com.netshoes.easycache.factory;
 
-import static com.netshoes.integration.cache.factory.constants.RedisConstants.DEFAULT_HOST;
-import static com.netshoes.integration.cache.factory.constants.RedisConstants.DEFAULT_PORT;
-import static com.netshoes.integration.cache.factory.constants.RedisConstants.DEFAULT_TIMEOUT;
+
+
+import static com.netshoes.easycache.configuration.properties.constants.EasyCacheConstants.REDIS_DEFAULT_HOST;
+import static com.netshoes.easycache.configuration.properties.constants.EasyCacheConstants.REDIS_DEFAULT_PORT;
+import static com.netshoes.easycache.configuration.properties.constants.EasyCacheConstants.REDIS_DEFAULT_TIMEOUT;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Disposes;
@@ -13,8 +15,8 @@ import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.netshoes.integration.api.properties.ApplicationProperties;
-import com.netshoes.integration.api.properties.CacheProperties;
+import com.netshoes.easycache.configuration.properties.ApplicationProperties;
+import com.netshoes.easycache.configuration.properties.bean.EasyCacheProperties;
 
 import redis.clients.jedis.JedisPool;
 
@@ -31,20 +33,19 @@ public class JedisPoolFactory {
     @ApplicationScoped
     @Produces
     public  JedisPool getJedisPool(){
-    	final EasyCacheProperties cacheProperties = applicationProperties.getCacheProperties();
+    	final EasyCacheProperties cacheProperties = applicationProperties.getEasyCacheProperties();
     	
-    	String  host = DEFAULT_HOST;
-    	Integer port = DEFAULT_PORT;
-    	Integer timeout = DEFAULT_TIMEOUT;
-    	
+    	String  host = REDIS_DEFAULT_HOST;
+    	Integer port = REDIS_DEFAULT_PORT;
+    	Integer timeout = REDIS_DEFAULT_TIMEOUT;
     	
     	if (cacheProperties == null){
     		LOGGER.error("It wasn't possible load the cache properties. Application is assumed the DEFAULT settings.");
     	}
     	else{
-    		host = cacheProperties.getHost();
-    		port = cacheProperties.getPort();
-    		timeout = cacheProperties.getTimeout();
+    		host = cacheProperties.getRedisHost();
+    		port = cacheProperties.getRedisPort();
+    		timeout = cacheProperties.getRedisTimeout();
     	}
     	
         this.jedisPool = new JedisPool(new GenericObjectPoolConfig(), host, port, timeout);

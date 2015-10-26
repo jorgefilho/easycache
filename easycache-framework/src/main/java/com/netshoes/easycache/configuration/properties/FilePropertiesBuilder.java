@@ -1,6 +1,5 @@
 package com.netshoes.easycache.configuration.properties;
 
-import static java.lang.String.format;
 import static java.util.Arrays.asList;
 
 import java.io.File;
@@ -13,7 +12,6 @@ import javax.enterprise.context.RequestScoped;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.configuration.reloading.FileChangedReloadingStrategy;
-import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -51,15 +49,10 @@ public class FilePropertiesBuilder implements Serializable {
 	public FilePropertiesBuilder build() {
 		try {
 			
-			String sourceFile = format("%s%s", ApplicationPropertiesConstants.ABSOLUTE_PATH, FileProperties.APPLICATION.getFilename());
-			String propertyPath = System.getProperty(EXTERNAL_PATH_PROPERTY);
+			String propertyPath = System.getProperty("easycache.config.location");
 			
-			if (StringUtils.isNotBlank(propertyPath)){
-				sourceFile = propertyPath;
-			}
-			
-			LOGGER.info("Load external file: {}", sourceFile);
-			this.file = new File(sourceFile);
+			LOGGER.info("Load external file: {}", propertyPath);
+			this.file = new File(propertyPath);
 			
 			if (this.file == null || !this.file.exists()) {
 				LOGGER.error("File not found");
