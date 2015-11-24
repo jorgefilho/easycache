@@ -3,13 +3,17 @@
 *.war
 *.ear
 
-# Eclipse Files #
+# Eclipse 
 .classpath
 .project
 .settings/
 target/
 bin/
 
+# Intellij
+.idea/
+*.iml
+*.iws
 
 # Compiled source #
 ###################

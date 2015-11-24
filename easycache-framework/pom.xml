@@ -7,6 +7,7 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>easycache-framework</artifactId>
+	<version>1.0.0-RELEASE</version>
 	<packaging>jar</packaging>
 	<name>Easy Cache Framework</name>
 	<inceptionYear>2015</inceptionYear>

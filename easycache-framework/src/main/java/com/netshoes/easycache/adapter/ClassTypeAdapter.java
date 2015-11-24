@@ -26,5 +26,4 @@ public class ClassTypeAdapter implements JsonSerializer<Class<?>>, JsonDeseriali
             throw new RuntimeException(e);
         }
     }
-
 }
