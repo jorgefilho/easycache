@@ -30,8 +30,8 @@ public class JedisConnectionFactory {
     	}
         return jedis;
     }
- 
+    
     public void returnResource(@Disposes Jedis jedis){
-        jedisPool.returnResourceObject(jedis);
+        jedisPool.close();
     }
 }
